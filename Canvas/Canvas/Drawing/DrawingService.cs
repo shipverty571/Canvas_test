@@ -38,7 +38,7 @@ public class DrawingService
         var countColumns = width / ConstValues.GridSize + 1;
         var countRows = height / ConstValues.GridSize + 1;
 
-        for (int i = 1; i < countColumns; i++)
+        for (int i = 0; i < countColumns; i++)
         {
             _canvas.DrawLine(
                 i * ConstValues.GridSize, 
@@ -48,7 +48,7 @@ public class DrawingService
                 new SKPaint { Color = SKColors.Black });
         }
         
-        for (int i = 1; i < countRows; i++)
+        for (int i = 0; i < countRows; i++)
         {
             _canvas.DrawLine(
                 0, 

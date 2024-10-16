@@ -19,6 +19,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <local:HorizontalCanvasRulerControl 
+            Grid.Row="0"
+            Grid.Column="1"
+            Height="30"
+            ActualCanvasWidth="{Binding ActualWidth}"/>
+        <local:VerticalCanvasRulerControl 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Width="30"
+            ActualCanvasHeight="{Binding ActualHeight}"/>
         <skia:SKElement 
             Grid.Column="1"
             Grid.Row="1"
@@ -27,11 +37,5 @@
             services:DataPipe.ObservedWidth="{Binding ActualWidth, Mode=OneWayToSource}"
             services:DataPipe.ObservedHeight="{Binding ActualHeight, Mode=OneWayToSource}"
             PaintSurface="CanvasElement_OnPaintSurface" />
-        <local:TopCanvasRulerControl 
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Height="30"
-            ActualCanvasWidth="{Binding ActualWidth}"/>
     </Grid>
 </UserControl>

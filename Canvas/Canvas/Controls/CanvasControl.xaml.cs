@@ -5,14 +5,24 @@ using SkiaSharp.Views.Desktop;
 
 namespace Canvas.Controls;
 
+/// <summary>
+/// Контрол для канвы.
+/// </summary>
 public partial class CanvasControl : UserControl
 {
+    /// <summary>
+    /// Сервис отрисовки канвы.
+    /// </summary>
+    private DrawingService _drawingService;
+    
     public CanvasControl()
     {
         InitializeComponent();
 
         var vm = new CanvasVM();
         DataContext = vm;
+
+        _drawingService = new DrawingService();
         
         // Запускает в отдельном процессе ререндеринг канвы.
         // При запуске нового рендеринга вызывается обработчик CanvasElement_OnPaintSurface.
@@ -38,10 +48,8 @@ public partial class CanvasControl : UserControl
         });
     }
 
-    public DrawingService DrawingService { get; set; } = new DrawingService();
-
     private void CanvasElement_OnPaintSurface(object? sender, SKPaintSurfaceEventArgs e)
     {
-        DrawingService.Draw(e);
+        _drawingService.Draw(e);
     }
 }
